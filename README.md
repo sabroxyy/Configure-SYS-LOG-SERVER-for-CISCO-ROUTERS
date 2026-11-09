@@ -1,6 +1,21 @@
-![Syslog Server for Cisco Routers](assets/banner.svg)
+<div align="center">
+
+```
+███████╗ █████╗ ██████╗ ██████╗  ██████╗ ██╗  ██╗██╗   ██╗██╗   ██╗
+██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔═══██╗╚██╗██╔╝╚██╗ ██╔╝╚██╗ ██╔╝
+███████╗███████║██████╔╝██████╔╝██║   ██║ ╚███╔╝  ╚████╔╝  ╚████╔╝
+╚════██║██╔══██║██╔══██╗██╔══██╗██║   ██║ ██╔██╗   ╚██╔╝    ╚██╔╝
+███████║██║  ██║██████╔╝██║  ██║╚██████╔╝██╔╝ ██╗   ██║      ██║
+╚══════╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝      ╚═╝
+```
 
 # Syslog Server for Cisco Routers
+
+**Central rsyslog server for Cisco IOS logs, one file per router, with automatic cleanup of old logs.**
+
+</div>
+
+---
 
 Step-by-step notes for sending Cisco IOS router logs to a central Linux **rsyslog** server, with one log file per device.
 
