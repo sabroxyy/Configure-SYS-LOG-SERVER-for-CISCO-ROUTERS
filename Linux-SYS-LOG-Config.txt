@@ -88,3 +88,30 @@ If firewalld is enabled on the server:
 If nothing arrives, check:
 # tail -f /var/log/messages          (rsyslog errors)
 # tcpdump -ni any port 514           (are packets reaching the server?)
+
+=============================================================
+6. Auto-delete old logs before the disk fills up
+=============================================================
+
+Two layers:
+  a) logrotate  - rotates each router log daily, compresses it,
+                  keeps 30 days (scripts/logrotate-syslogs)
+  b) cleanup    - every 15 min, if the disk is over 80% used, deletes
+                  the OLDEST rotated logs until it is back to 70%
+                  (scripts/syslog-cleanup.sh)
+
+# cp scripts/logrotate-syslogs /etc/logrotate.d/syslogs
+# cp scripts/syslog-cleanup.sh /usr/local/bin/syslog-cleanup.sh
+# chmod 755 /usr/local/bin/syslog-cleanup.sh
+# echo '*/15 * * * * root /usr/local/bin/syslog-cleanup.sh' > /etc/cron.d/syslog-cleanup
+
+Test:
+# logrotate -d /etc/logrotate.d/syslogs        (dry run, changes nothing)
+# /usr/local/bin/syslog-cleanup.sh
+# grep syslog-cleanup /var/log/messages        (what was deleted)
+
+To change the limits, edit THRESHOLD / TARGET at the top of the script
+(or "rotate 30" / "maxage 30" in the logrotate file for days kept).
+
+Tip: put /var/log/syslogs on its own partition so a log flood can
+never fill the root filesystem.

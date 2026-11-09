@@ -1,0 +1,17 @@
+# /etc/logrotate.d/syslogs
+# Rotate router logs daily, compress them, keep 30 days.
+/var/log/syslogs/*.log {
+    daily
+    rotate 30
+    maxage 30
+    compress
+    delaycompress
+    dateext
+    dateformat -%Y%m%d-%s
+    missingok
+    notifempty
+    sharedscripts
+    postrotate
+        /usr/bin/systemctl kill -s HUP rsyslog.service >/dev/null 2>&1 || true
+    endscript
+}
