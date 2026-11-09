@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="Syslog Server for Cisco Routers">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1f33"/>
+      <stop offset="1" stop-color="#04506e"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#49c5b6"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="300" fill="url(#bg)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.06">
+    <path d="M0 60 H1200 M0 120 H1200 M0 180 H1200 M0 240 H1200"/>
+    <path d="M150 0 V300 M300 0 V300 M450 0 V300 M600 0 V300 M750 0 V300 M900 0 V300 M1050 0 V300"/>
+  </g>
+  <text x="60" y="110" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="52" font-weight="700" fill="#ffffff">Syslog Server for Cisco Routers</text>
+  <text x="60" y="155" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#b8d8e6">Centralize Cisco IOS logs on a Linux rsyslog server, one file per device</text>
+  <g font-family="Consolas, Menlo, monospace" font-size="18">
+    <rect x="60" y="200" width="220" height="60" rx="10" fill="#0e3a52" stroke="#49c5b6" stroke-width="2"/>
+    <text x="170" y="236" text-anchor="middle" fill="#ffffff">Cisco router</text>
+    <line x1="290" y1="230" x2="560" y2="230" stroke="#49c5b6" stroke-width="3" stroke-dasharray="10 6" marker-end="url(#arrow)"/>
+    <text x="425" y="218" text-anchor="middle" fill="#b8d8e6">UDP/TCP 514</text>
+    <rect x="570" y="200" width="300" height="60" rx="10" fill="#0e3a52" stroke="#49c5b6" stroke-width="2"/>
+    <text x="720" y="236" text-anchor="middle" fill="#ffffff">rsyslog server</text>
+    <text x="900" y="236" fill="#b8d8e6">/var/log/syslogs/</text>
+  </g>
+</svg>

@@ -1,32 +1,38 @@
 =============================================================
-RW Config
+Cisco Router Config (IOS / IOS-XE)
 =============================================================
 
-#logging buffered 100000 informational
+Replace <syslog-server-ip> and <interface> with your values.
 
-#logging trap informational
+conf t
+ service timestamps log datetime msec localtime show-timezone
+ logging buffered 100000 informational
+ logging trap informational
+ logging source-interface <interface>
+ logging host <syslog-server-ip> session-id hostname
+ logging on
+ !
+ ! Send every configuration change to syslog (audit trail)
+ archive
+  log config
+   logging enable
+   logging size 1000
+   notify syslog contenttype plaintext
+   hidekeys
+end
+write memory
 
-#logging source-interface 
+=============================================================
+Optional: send over TCP instead of UDP (default is UDP 514)
+=============================================================
 
-#logging host "IP" session-id hostname
+conf t
+ logging host <syslog-server-ip> transport tcp port 514 session-id hostname
+end
 
-#logging "IP"
+=============================================================
+Verify on the router
+=============================================================
 
-#logging on
-
-#service timestamps log datetime
-
-#logging host "IP" session-id hostname
-
-#archive
-
-#log config
-
-#logging enable
-
-#logging size 1000
-
-#notify syslog contenttype plaintext
-
-#hidekeys
-
+show logging
+send log "syslog test from router"
